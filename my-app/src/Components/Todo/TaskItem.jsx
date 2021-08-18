@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 
-class TaskList extends Component {
+class TaskItem extends Component {
   render() {
+    var {tasks,index} = this.props
     return (
-        <tr>
-        <td>1</td>
-        <td>Học lập trình</td>
+      <tr>
+        <td>{index + 1}</td>
+        <td>{tasks.name}</td>
         <td className="text-center">
-          <span className="label label-success">Kích Hoạt</span>
+          <span className={tasks.status === true ? 'label label-danger' : 'label label-success'}>
+            {tasks.status === true ? 'Kích Hoạt' : 'Ẩn'}
+            </span>
         </td>
         <td className="text-center">
           <button type="button" className="btn btn-warning">
@@ -24,4 +27,4 @@ class TaskList extends Component {
   }
 }
 
-export default TaskList;
+export default TaskItem;

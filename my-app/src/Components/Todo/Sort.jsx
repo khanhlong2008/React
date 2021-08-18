@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class Sort extends Component {
   render() {
     return (
-      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <div className="dropdown">
           <button
             className="btn btn-primary dropdown-toggle"
