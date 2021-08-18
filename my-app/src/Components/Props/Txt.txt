@@ -1,0 +1,4 @@
+- Props là một object được truyền vào trong một components, mỗi components sẽ nhận vào props và trả về react element.
+- Props cho phép chúng ta giao tiếp giữa các components với nhau bằng cách truyền tham số qua lại giữa các components.
+- Khi một components cha truyền cho component con một props thì components con chỉ có thể đọc và không có quyền chỉnh sửa nó bên phía components cha.
+- children : la content(noi dung) trong the nen dung co the (this.props.children).
