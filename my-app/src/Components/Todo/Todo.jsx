@@ -12,7 +12,8 @@ class Todo extends Component {
       tasks: [],
       isDisplayForm: false,
       tasksEditing: null,
-    };
+      keyWord:'',
+    };  
   }
 
   componentDidMount() {
@@ -140,6 +141,12 @@ class Todo extends Component {
     });
     this.onShowUpdateForm();
   };
+  onSearch = (keywork) =>{
+    // console.log(keywork)
+    this.setState({
+      keyWord:keywork
+    })
+  }
   render() {
     var { tasks, isDisplayForm, tasksEditing } = this.state;
     var eleTaskForm = isDisplayForm ? (
@@ -193,7 +200,7 @@ class Todo extends Component {
                   </button>
                 </div>
               </div>
-              <Control />
+              <Control onSearch={this.onSearch}/>
               <TaskList
                 tasks={tasks}
                 onUpdateStatus={this.onUpdateStatus}
