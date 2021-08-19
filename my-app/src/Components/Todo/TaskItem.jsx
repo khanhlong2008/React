@@ -19,7 +19,7 @@ class TaskItem extends Component {
         <td>{tasks.name}</td>
         <td className="text-center">
           <span 
-          className={tasks.status === true ? 'label label-danger' : 'label label-success'}
+          className={tasks.status === true ? 'label label-danger potion' : 'label label-success potion'}
           onClick={this.onUpdateStatus}
           >
             {tasks.status === true ? 'Kích Hoạt' : 'Ẩn'}

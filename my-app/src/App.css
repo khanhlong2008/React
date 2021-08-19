@@ -43,3 +43,6 @@
   display: flex;
   justify-content: space-between;
 }
+.potion{
+  cursor:pointer;
+}
