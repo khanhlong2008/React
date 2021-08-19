@@ -11,6 +11,7 @@ class Todo extends Component {
     this.state = {
       tasks: [],
       isDisplayForm: false,
+      tasksEditing: null,
     };
   }
 
@@ -67,19 +68,89 @@ class Todo extends Component {
       this.s4()
     );
   }
-  onToggleForm = ()=>{
+  onOpenForm = () => {
     this.setState({
-      isDisplayForm : !this.state.isDisplayForm
-    })
-  }
-  oncloseForm = () =>{
+      isDisplayForm: !this.state.isDisplayForm,
+    });
+  };
+  oncloseForm = () => {
     this.setState({
-      isDisplayForm : false
-    })
-  }
+      isDisplayForm: false,
+    });
+  };
+  onShowUpdateForm = () => {
+    this.setState({
+      isDisplayForm: true,
+    });
+  };
+  onSubmit = (data) => {
+    var { tasks } = this.state;
+    if (data.id === "") {
+      data.id = this.generateID();
+      tasks.push(data);
+    }else{
+      var index = this.findIndex(data.id);
+      tasks[index] = data
+    }
+    this.setState({
+      tasks: tasks,
+      tasksEditing:null,
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  };
+  onUpdateStatus = (id) => {
+    var { tasks } = this.state;
+    var index = this.findIndex(id);
+    if (index !== -1) {
+      tasks[index].status = !tasks[index].status;
+      this.setState({
+        tasks: tasks,
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+  };
+  findIndex = (id) => {
+    var { tasks } = this.state;
+    var result = -1;
+    tasks.forEach((tasks, index) => {
+      if (tasks.id === id) {
+        result = index;
+      }
+    });
+    return result;
+  };
+  onDelete = (id) => {
+    var { tasks } = this.state;
+    var index = this.findIndex(id);
+    if (index !== -1) {
+      tasks.splice(index, 1);
+      this.setState({
+        tasks: tasks,
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+    this.oncloseForm();
+  };
+  onUpdate = (id) => {
+    var { tasks } = this.state;
+    var index = this.findIndex(id);
+    var tasksEditing = tasks[index];
+    this.setState({
+      tasksEditing: tasksEditing,
+    });
+    this.onShowUpdateForm();
+  };
   render() {
-    var { tasks, isDisplayForm } = this.state;
-    var eleTaskForm = isDisplayForm ? <TaskForm oncloseForm={this.oncloseForm}/> : "";
+    var { tasks, isDisplayForm, tasksEditing } = this.state;
+    var eleTaskForm = isDisplayForm ? (
+      <TaskForm
+        oncloseForm={this.oncloseForm}
+        onSubmit={this.onSubmit}
+        tasksEditing={tasksEditing}
+      />
+    ) : (
+      ""
+    );
     return (
       <>
         <div className="container ">
@@ -107,7 +178,7 @@ class Todo extends Component {
                   <button
                     type="button"
                     className="btn btn-primary mabtn display"
-                    onClick={this.onToggleForm}
+                    onClick={this.onOpenForm}
                   >
                     Thêm Công Việc
                   </button>
@@ -123,7 +194,12 @@ class Todo extends Component {
                 </div>
               </div>
               <Control />
-              <TaskList tasks={tasks} />
+              <TaskList
+                tasks={tasks}
+                onUpdateStatus={this.onUpdateStatus}
+                onDelete={this.onDelete}
+                onUpdate={this.onUpdate}
+              />
             </div>
           </div>
         </div>
