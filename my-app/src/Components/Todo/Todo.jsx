@@ -12,8 +12,14 @@ class Todo extends Component {
       tasks: [],
       isDisplayForm: false,
       tasksEditing: null,
-      keyWord:'',
-    };  
+      filter: {
+        name: "",
+        status: -1,
+      },
+      keyWord: "",
+      sortBy: "",
+      sortValue: 1,
+    };
   }
 
   componentDidMount() {
@@ -89,19 +95,20 @@ class Todo extends Component {
     if (data.id === "") {
       data.id = this.generateID();
       tasks.push(data);
-    }else{
+    } else {
       var index = this.findIndex(data.id);
-      tasks[index] = data
+      tasks[index] = data;
     }
     this.setState({
       tasks: tasks,
-      tasksEditing:null,
+      tasksEditing: null,
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
   };
   onUpdateStatus = (id) => {
-    var { tasks } = this.state;
-    var index = this.findIndex(id);
+    var  tasks  = this.state.tasks;
+    // var index = this.findIndex(id);
+    var index = tasks.findIndex(task=> task.id === id)
     if (index !== -1) {
       tasks[index].status = !tasks[index].status;
       this.setState({
@@ -131,6 +138,7 @@ class Todo extends Component {
       localStorage.setItem("tasks", JSON.stringify(tasks));
     }
     this.oncloseForm();
+    console.log(tasks);
   };
   onUpdate = (id) => {
     var { tasks } = this.state;
@@ -141,14 +149,77 @@ class Todo extends Component {
     });
     this.onShowUpdateForm();
   };
-  onSearch = (keywork) =>{
+  onSearch = (keywork) => {
     // console.log(keywork)
     this.setState({
-      keyWord:keywork
-    })
-  }
+      keyWord: keywork,
+    });
+  };
+  onFilter = (filterName, filterStatus) => {
+    // console.log(filterName , '-', filterStatus)
+    // console.log(typeof(filterStatus))
+    filterStatus = parseInt(filterStatus, 10);
+    // console.log(typeof filterStatus)
+    this.setState({
+      filter: {
+        name: filterName.toLocaleLowerCase(),
+        status: filterStatus,
+      },
+    });
+  };
+  onSort = (sortBy, sortValue) => {
+    // console.log(sortBy,'-',sortValue)
+    this.setState({
+      sortBy: sortBy,
+      sortValue: sortValue,
+    });
+  };
   render() {
-    var { tasks, isDisplayForm, tasksEditing } = this.state;
+    var {
+      tasks,
+      isDisplayForm,
+      tasksEditing,
+      filter,
+      keyWord,
+      sortBy,
+      sortValue,
+    } = this.state;
+    // console.log(filter)
+    //filter name
+    if (filter) {
+      if (filter.name) {
+        tasks = tasks.filter((task) => {
+          return task.name.toLowerCase().indexOf(filter.name) !== -1;
+        });
+      }
+      tasks = tasks.filter((task) => {
+        if (filter.status === -1) {
+          return task;
+        } else {
+          return task.status === (filter.status === 1 ? true : false);
+        }
+      });
+    }
+    if (keyWord) {
+      tasks = tasks.filter((task) => {
+        return task.name.toLowerCase().indexOf(keyWord) !== -1;
+      });
+    }
+    if (sortBy === "name") {
+      tasks.sort((a, b) => {
+        if (a.name > b.name) return sortValue;
+        else if (a.name < b.name) return -sortValue;
+        else return 0;
+      });
+    } else {
+      tasks.sort((a, b) => {
+        if (a.status > b.status) return -sortValue;
+        else if (a.status < b.status) return sortValue;
+        else return 0;
+      });
+    }
+
+    // console.log(sortBy,'-',sortValue)
     var eleTaskForm = isDisplayForm ? (
       <TaskForm
         oncloseForm={this.oncloseForm}
@@ -200,8 +271,14 @@ class Todo extends Component {
                   </button>
                 </div>
               </div>
-              <Control onSearch={this.onSearch}/>
+              <Control
+                onSearch={this.onSearch}
+                onSort={this.onSort}
+                sortBy={sortBy}
+                sortValue={sortValue}
+              />
               <TaskList
+                onFilter={this.onFilter}
                 tasks={tasks}
                 onUpdateStatus={this.onUpdateStatus}
                 onDelete={this.onDelete}

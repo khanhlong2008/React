@@ -10,7 +10,11 @@ class Control extends Component {
         {/* search */}
         <Search onSearch={this.props.onSearch}/>
         {/* sort */}
-        <Sort />
+        <Sort 
+        onSort={this.props.onSort}
+        sortBy={this.props.sortBy}
+        sortValue={this.props.sortValue}
+        />
       </div>
     );
   }

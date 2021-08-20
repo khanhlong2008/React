@@ -19,16 +19,16 @@ class TaskForm extends Component {
       });
     }
   }
-  static getDerivedStateFromProps(nextProps,) {
-    if (nextProps && nextProps.tasksEditing) {
-      return {
-        id: nextProps.tasksEditing.id,
-        name: nextProps.tasksEditing.name,
-        status: nextProps.tasksEditing.status,
-      };
-    }
-    return null;
-  }
+  // static getDerivedStateFromProps(nextProps,) {
+  //   if (nextProps && nextProps.tasksEditing) {
+  //     return {
+  //       id: nextProps.tasksEditing.id,
+  //       name: nextProps.tasksEditing.name,
+  //       status: nextProps.tasksEditing.status,
+  //     };
+  //   }
+  //   return null;
+  // }
   // componentDidUpdate(nextProps,prevState) {
   //   if (prevState.tasksEditing !== nextProps.tasksEditing) {
   //     this.setState({
