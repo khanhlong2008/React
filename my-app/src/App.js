@@ -1,14 +1,11 @@
 
 import './App.css';
-import Todo from './Components/Todo/Todo';
-// import Form from './Components/Form/form';
-// import {Props} from './Components/Props/Props'
+// import Todo from './Components/Todo/Todo';
+import redux from './traning/redux'
 function App() {
   return (
     <div className="App">
-     {/* <Props/> */}
-     {/* <Form/> */}
-     <Todo/>
+     {/* <Todo/> */}
     </div>
   );
 }
