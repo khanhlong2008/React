@@ -8,12 +8,12 @@ class Control extends Component {
     return (
       <div className="row mabtn">
         {/* search */}
-        <Search onSearch={this.props.onSearch}/>
+        <Search onSearch={this.props.onSearch} />
         {/* sort */}
-        <Sort 
-        onSort={this.props.onSort}
-        sortBy={this.props.sortBy}
-        sortValue={this.props.sortValue}
+        <Sort
+          onSort={this.props.onSort}
+          sortBy={this.props.sortBy}
+          sortValue={this.props.sortValue}
         />
       </div>
     );
