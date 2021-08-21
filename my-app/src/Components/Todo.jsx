@@ -279,7 +279,7 @@ class Todo extends Component {
               />
               <TaskList
                 onFilter={this.onFilter}
-                tasks={tasks}
+                // tasks={tasks}
                 onUpdateStatus={this.onUpdateStatus}
                 onDelete={this.onDelete}
                 onUpdate={this.onUpdate}
