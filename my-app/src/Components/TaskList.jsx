@@ -25,7 +25,7 @@ class TaskList extends Component {
 
   };
   render() {
-    console.log(this.props.todos)
+    // console.log(this.props.todos)
     var { tasks } = this.props;
     var { filterStatus, filterName } = this.state;
     var elmTasks = tasks.map((tasks, index) => {
