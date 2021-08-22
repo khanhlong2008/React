@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import {connect} from 'react-redux'
-import * as action from './../actions/index'
+import * as actions from './../actions/index'
 class TaskForm extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class TaskForm extends Component {
   //   }
   // }
   oncloseForm = () => {
-    this.props.oncloseForm();
+    this.props.onCloseForm();
   };
   onChange = (e) => {
     var target = e.target;
@@ -136,7 +136,10 @@ const mapStateToProps = state =>{
 const mapDispatchToProps =  (dispatch,props)=>{
   return {
     onAddTask : (task) =>{
-      dispatch(action.addTask(task));
+      dispatch(actions.addTask(task));
+    },
+    onCloseForm: ()=>{
+      dispatch(actions.closeForm())
     }
   }
 }

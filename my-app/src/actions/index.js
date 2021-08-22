@@ -12,18 +12,18 @@ export const addTask = (task =>{
         task,// task:tsak
     } 
 })
-export const toggleForm = (task =>{
+export const toggleForm = () =>{
     return {
         type : types.TOGGLE_FROM,
     } 
-})
-export const closeForm = (task =>{
+}
+export const closeForm = () =>{
     return {
         type : types.CLOSE_FROM,
     } 
-})
-export const openForm = (task =>{
+}
+export const openForm = () =>{
     return {
         type : types.OPEN_FROM,
     } 
-})
+}

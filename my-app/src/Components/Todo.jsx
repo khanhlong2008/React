@@ -101,10 +101,9 @@ class Todo extends Component {
       sortBy,
       sortValue,
     } = this.state;
-    var {isDisplayForm} = this.props
+    var { isDisplayForm }  = this.props
     var eleTaskForm = isDisplayForm === true ? (
-      <TaskForm
-        oncloseForm={this.oncloseForm}
+      <TaskForm       
         tasksEditing={tasksEditing}
       />
     ) : (
@@ -171,7 +170,7 @@ const mapDispatchToProps = (dispatch,props) =>{
   return{
     onToggleForm : ()=>{
       dispatch(actions.toggleForm())
-    }
+    },
   };
 }
 export default connect(mapStateToProps,mapDispatchToProps) (Todo);

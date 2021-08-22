@@ -1,15 +1,17 @@
 import * as types from "./../constants/ActionTypes";
 
-var initalState = true;
+var initalState = false;
 
 var myReducer = (state = initalState, action) => {
   switch (action.type) {
     case types.TOGGLE_FROM:
-        return !state
+      return !state
     case types.CLOSE_FROM:
-      return false
+      state = false
+      return state
     case types.OPEN_FROM:
-      return true
+      state = true
+      return state
     default:
       return state;
   }
