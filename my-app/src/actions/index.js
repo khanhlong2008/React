@@ -9,7 +9,7 @@ export  const listAll = ()=>{
 export const addTask = (task =>{
     return {
         type : types.ADD_TASK,
-        task,// task:tsak
+        task,// task:tasks
     } 
 })
 export const toggleForm = () =>{
@@ -25,5 +25,11 @@ export const closeForm = () =>{
 export const openForm = () =>{
     return {
         type : types.OPEN_FROM,
+    } 
+}
+export const updateStatus = (id) =>{
+    return {
+        type : types.UPDATE_STATUS_TASK,
+        id,
     } 
 }

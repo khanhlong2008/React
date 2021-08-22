@@ -9,7 +9,7 @@ var randomId = () => {
   return (
     s4() +
     s4() +
-    "-" + 
+    "-" +
     s4() +
     "-" +
     s4() +
@@ -31,12 +31,20 @@ var myReducer = (state = initalState, action) => {
       return state;
     case types.ADD_TASK:
       var newtask = {
-          id: randomId(),
-          name:action.task.name,
-          status:action.task.status === 'true' ? true : false
-      }
+        id: randomId(),
+        name: action.task.name,
+        status: action.task.status === "true" ? true : false,
+      };
       state.push(newtask);
-      localStorage.setItem('task',JSON.stringify(state))
+      localStorage.setItem("tasks", JSON.stringify(state));
+      return [...state];
+    case types.UPDATE_STATUS_TASK:
+      var id = action.id;
+      var index = state.findIndex(state => state.id === id);
+      state[index] =  {
+        ...state[index],status : !state[index].status 
+      };
+      localStorage.setItem("tasks", JSON.stringify(state));
       return [...state];
     default:
       return state;

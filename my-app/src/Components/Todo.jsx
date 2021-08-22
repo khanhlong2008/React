@@ -23,27 +23,22 @@ class Todo extends Component {
   onOpenForm = () => {
     this.props.onToggleForm()
   };
-  oncloseForm = () => {
-    this.setState({
-      isDisplayForm: false,
-    });
-  };
   onShowUpdateForm = () => {
     this.setState({
       isDisplayForm: true,
     });
   };
-  onUpdateStatus = (id) => {
-    var  tasks  = this.state.tasks;
-    var index = tasks.findIndex(task=> task.id === id)
-    if (index !== -1) {
-      tasks[index].status = !tasks[index].status;
-      this.setState({
-        tasks: tasks,
-      });
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
-  };
+  // onUpdateStatus = (id) => {
+  //   var  tasks  = this.state.tasks;
+  //   var index = tasks.findIndex(task=> task.id === id)
+  //   if (index !== -1) {
+  //     tasks[index].status = !tasks[index].status;
+  //     this.setState({
+  //       tasks: tasks,
+  //     });
+  //     localStorage.setItem("tasks", JSON.stringify(tasks));
+  //   }
+  // };
   // findIndex = (id) => {    
   //   var result = -1;
   //   tasks.forEach((tasks, index) => {
@@ -150,7 +145,6 @@ class Todo extends Component {
               />
               <TaskList
                 onFilter={this.onFilter}
-                onUpdateStatus={this.onUpdateStatus}
                 onDelete={this.onDelete}
                 onUpdate={this.onUpdate}
               />

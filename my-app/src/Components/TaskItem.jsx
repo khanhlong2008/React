@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
+import {connect} from 'react-redux'
+import * as actions from './../actions/index'
 
 class TaskItem extends Component {
   onUpdateStatus = ()=>{
@@ -19,7 +21,7 @@ class TaskItem extends Component {
         <td>{tasks.name}</td>
         <td className="text-center">
           <span 
-          className={tasks.status === true ? 'label label-danger potion' : 'label label-success potion'}
+          className={tasks.status === true ? 'label label-primary potion' : 'label label-primary potion'}
           onClick={this.onUpdateStatus}
           >
             {tasks.status === true ? 'Kích Hoạt' : 'Ẩn'}
@@ -28,7 +30,7 @@ class TaskItem extends Component {
         <td className="text-center">
           <button 
           type="button" 
-          className="btn btn-warning"
+          className="btn btn-primary"
           onClick={this.onUpdate}
           >
             Sửa
@@ -36,7 +38,7 @@ class TaskItem extends Component {
           &nbsp;
           <button 
           type="button" 
-          className="btn btn-danger"
+          className="btn btn-primary"
           onClick={this.onDelete}
           >
             Xóa
@@ -47,4 +49,15 @@ class TaskItem extends Component {
   }
 }
 
-export default TaskItem;
+const mapStateToProps = state =>{
+  return{};
+}
+const mapDispatchToProps = (dispatch,props) =>{
+  return{
+    onUpdateStatus : (id)=>{
+      dispatch(actions.updateStatus(id))
+    }
+  };
+}
+export default connect(mapStateToProps,mapDispatchToProps) (TaskItem);
+

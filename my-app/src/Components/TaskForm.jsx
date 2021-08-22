@@ -57,8 +57,8 @@ class TaskForm extends Component {
     e.preventDefault();
     // this.props.onSubmit(this.state);
     this.props.onAddTask(this.state)
+    this.props.onCloseForm()
     this.onClear();
-    this.oncloseForm();
   };
   onClear = () => {
     this.setState({
@@ -69,7 +69,7 @@ class TaskForm extends Component {
   render() {
     const { id } = this.state;
     return (
-      <div className="panel panel-warning">
+      <div className="panel panel-primary">
         <div className="panel-heading">
           <div className="row">
             <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -110,13 +110,13 @@ class TaskForm extends Component {
             </select>
             <br />
             <div className="text-center">
-              <button type="submit" className="btn btn-warning">
+              <button type="submit" className="btn btn-primary">
                 Lưu Lại
               </button>
               &nbsp;
               <button
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-primary"
                 onClick={this.onClear}
               >
                 Hủy Bỏ
