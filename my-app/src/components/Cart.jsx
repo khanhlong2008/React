@@ -20,9 +20,7 @@ class Cart extends Component {
               </tr>
             </thead>
             <tbody>
-              <CartItem/>
-              <CartItem/>
-              <CartItem/>
+              <CartItem/>    
               <CartResult/>
             </tbody>
           </table>

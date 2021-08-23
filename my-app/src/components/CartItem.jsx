@@ -22,13 +22,13 @@ class CartItem extends Component {
           <span className="qty">1 </span>
           <div className="btn-group radio-group" data-toggle="buttons">
             <label
-              className="btn btn-sm btn-primary
+              className="btn btn-sm btn-info
                                               btn-rounded waves-effect waves-light"
             >
               <a>—</a>
             </label>
             <label
-              className="btn btn-sm btn-primary
+              className="btn btn-sm btn-info
                                               btn-rounded waves-effect waves-light"
             >
               <a>+</a>
@@ -39,7 +39,7 @@ class CartItem extends Component {
         <td>
           <button
             type="button"
-            className="btn btn-sm btn-primary waves-effect waves-light"
+            className="btn btn-sm btn-info waves-effect waves-light"
             data-toggle="tooltip"
             data-placement="top"
             title=""

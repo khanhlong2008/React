@@ -18,7 +18,7 @@ class CartResult extends Component {
         <td colSpan="3">
           <button
             type="button"
-            className="btn btn-primary waves-effect waves-light"
+            className="btn btn-info waves-effect waves-light"
           >
             Complete purchase
             <i className="fa fa-angle-right right"></i>
