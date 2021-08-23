@@ -1,7 +1,7 @@
-import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Message from "./components/Message"
+import CartContainer from "./Containers/CartContainer";
 import ProductContainer from "./Containers/ProductContainer";
 
 
@@ -16,7 +16,7 @@ function App() {
           <div className="container">
             <ProductContainer/>
             <Message/>
-            <Cart />
+            <CartContainer/>
           </div>
         </main>
         <Footer />

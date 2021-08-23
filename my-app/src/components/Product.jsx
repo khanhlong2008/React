@@ -28,7 +28,7 @@ class Product extends Component {
             </ul>
             <p className="card-text">{product.description}</p>
             <div className="card-footer">
-              <span className="left">{product.price}</span>
+              <span className="left">{product.price}$</span>
               <span className="right">
                 <a
                   className="btn-floating blue-gradient"
@@ -36,6 +36,7 @@ class Product extends Component {
                   data-placement="top"
                   title=""
                   data-original-title="Add to Cart"
+                  onClick={()=>this.onAddToCart(product)}
                 >
                   <i className="fa fa-shopping-cart"></i>
                 </a>
@@ -56,6 +57,11 @@ class Product extends Component {
     }
     return result;
   }
+  onAddToCart = (product) =>{
+    this.props.onAddToCart(product)
+  }
+
+  
 }
 
 export default Product;
