@@ -69,12 +69,15 @@ class CartItem extends Component {
     this.props.onChangeMessage(Message.MSG_DELETE_PRODUCT_IN_CART_SUCCESS);
   };
   onUpdateQuantity = (product, quantity) =>{
+    var {onUpdateQuantityInCart ,onChangeMessage} = this.props
     if(quantity >0 ){
       this.setState({
         quantity:quantity
       })
     }
-    this.props.onUpdateQuantityInCart(product,quantity)
+    onUpdateQuantityInCart(product,quantity)
+    onChangeMessage(product,quantity)
+    onChangeMessage(Message.MSG_UPDATE_TO_CART_SUCCESS);
   }
 }
 
