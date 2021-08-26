@@ -1,1 +1,2 @@
 export const CHANGE_MSG = 'CHANGE_MSG'
+export const UPDATE_QUANTITY= 'UPDATE_QUANTITY'

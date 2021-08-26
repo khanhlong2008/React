@@ -10,7 +10,7 @@ class BurgerCake extends Component {
             <div className="seeds"></div>
             <div className="seeds2"></div>
           </div>
-          {this.burgerContent()}
+          {/* {this.burgerContent()} */}
           {/* <!-- Phần bánh burger phía dươi --> */}
           <div className="bread-bottom"></div>
         </div>
@@ -18,7 +18,7 @@ class BurgerCake extends Component {
     );
   }
   burgerContent = () => {
-    let { salad, cheese, meat, bacon } = this.state;
+    let { salad, cheese, meat, bacon } = this.props;
     let burger = [];
     for (let i = 0; i < salad; i++) {
       burger.push(<div key={burger.length} className="salad"></div>);
