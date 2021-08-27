@@ -18,18 +18,23 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 };
 const menu = [
   {
-    name: " Home",
+    name: "Home",
     to: "/",
     exact: true,
   },
   {
-    name: " About",
+    name: "About",
     to: "/about",
     exact: false,
   },
   {
-    name: " Contact",
+    name: "Contact",
     to: "/contact",
+    exact: false,
+  },
+  {
+    name: "Products",
+    to: "/products",
     exact: false,
   },
 ];
