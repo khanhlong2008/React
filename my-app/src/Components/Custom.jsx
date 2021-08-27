@@ -71,10 +71,9 @@ class Custom extends Component {
     );
   }
  
-  onPlusMinusTopping = (burger,mina) => {
+  onPlusMinusTopping = () => {
     // this.props.onUpdateQuantity(burger);
-    console.log(burger)
-    console.log(mina)
+   
   };
   // onPlusMinusTopping = (action, topping) => {
   //   var {buger} = this.props;
