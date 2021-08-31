@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import "./App.css";
+import Button from "./Components/Button/Button";
+import Menu from "./Components/Menu/Menu";
+import ProductList from "./Components/ProductList/ProductList";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Menu />
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <Button label="Thêm Sản Phẩm" type="button" color="primary" />
+            <ProductList />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
