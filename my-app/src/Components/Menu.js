@@ -37,6 +37,11 @@ const menu = [
     to: "/products",
     exact: false,
   },
+  {
+    name: "Login",
+    to: "/login",
+    exact: false,
+  },
 ];
 class Menu extends Component {
   render() {

@@ -4,6 +4,7 @@ import Contact from "./Components/Contact";
 import NotFound from "./Components/NotFound";
 import Products from './Components/Products'
 import React from "react";
+import Login from "./Components/Login";
 
 const router = [
   {
@@ -24,7 +25,12 @@ const router = [
   {
     path: "/products",
     exact: false,
-    main: ({match}) => <Products match={match}/>
+    main: ({match,location}) => <Products match={match} location={location}/>
+  },
+  {
+    path: "/login",
+    exact: false,
+    main: ({location}) => <Login location={location}/>
   },
   {
     path: "",
