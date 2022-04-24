@@ -1,6 +1,6 @@
 
 import './App.css';
-import redux from './traning/redux'
+// import redux from './traning/redux'
 function App() {
   return (
     <div className="App">
